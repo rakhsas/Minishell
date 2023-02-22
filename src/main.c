@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 10:26:50 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/02/22 10:26:52 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/02/22 10:32:03 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 int main(int ac, char **av)
 {
 	printf("Hello World!!\n");
+	ft_print_error("Hilll");
 }

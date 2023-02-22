@@ -4,7 +4,7 @@
 # ###############################################################################
 
 NAME = minishell
-SRC = src/main.c
+SRC = src/main.c utils/error.c
 OBJS = $(SRC:.c=.o)
 CLR_RMV		:= \033[0m
 RED		    := \033[1;31m
