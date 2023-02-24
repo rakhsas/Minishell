@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 10:26:50 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/02/23 11:35:33 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/02/22 15:28:02 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/02/23 10:37:48 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	handle_signal(int signal)
+void	print_str(char *str)
 {
-	if (signal >= 1)
+	int	i;
+
+	i = 0;
+	while (i[str])
 	{
-		printf("SIGALE RECIEVED %d\n", signal);
-		exit(0);
+		write(1, &str[i], 1);
+		i++;
 	}
-}
-
-int main()
-{
-	signal(SIGQUIT, handle_signal);
-	signal(SIGINT, handle_signal);
-	while(1);
-// 	char buffer[100];
-
-//   // Read input from stdin until EOF is reached
-//   while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-//     printf("You entered: %s", buffer);
-//   }
-
-//   printf("End of input reached.\n");
-
 }

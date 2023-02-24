@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 10:26:50 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/02/23 11:35:33 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/02/22 16:05:46 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/02/22 16:26:48 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	handle_signal(int signal)
+void	ft_lstadd_back(t_main **lst, t_main *new)
 {
-	if (signal >= 1)
+	t_main	*nt;
+
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		printf("SIGALE RECIEVED %d\n", signal);
-		exit(0);
+		nt = *lst;
+		while (nt->next != NULL)
+			nt = nt->next;
+		nt->next = new;
 	}
 }
 
-int main()
+t_main	*ft_lstnew(char **ac, void *content)
 {
-	signal(SIGQUIT, handle_signal);
-	signal(SIGINT, handle_signal);
-	while(1);
-// 	char buffer[100];
+	t_main	*list;
 
-//   // Read input from stdin until EOF is reached
-//   while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-//     printf("You entered: %s", buffer);
-//   }
-
-//   printf("End of input reached.\n");
-
+	list = (t_main *)malloc(sizeof(t_main));
+	if (list == 0)
+		return (NULL);
+	list->content = content;
+	list->cmd = ac;
+	list->next = NULL;
+	return (list);
 }
