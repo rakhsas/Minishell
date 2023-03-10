@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:31:39 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/09 19:39:04 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/03/10 16:06:22 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,21 @@ void	ft_echo_next(t_main *data, int c, int j, char **av)
 
 void	ft_echo(t_main *data, int ac, char **av)
 {
-	int		i;
 	int		j;
 	int		c;
 
-	i = 0;
 	if (ac > 2)
 	{
-		data->values = malloc(sizeof(char *) * ac - 3);
-		if (ft_strcmp(av[2], "-n") == 0)
+		data->values = malloc(sizeof(char *) * ac);
+		if (ft_strcmp(av[1], "-n") == 0)
 		{
 			data->new_line = -1;
-			j = 3;
+			j = 2;
 		}
 		else
 		{
 			data->new_line = 0;
-			j = 2;
+			j = 1;
 		}
 		c = ac - j;
 		ft_echo_next(data, c, j, av);

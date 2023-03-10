@@ -6,19 +6,21 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 10:14:17 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/09 19:38:15 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/03/10 15:37:51 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-#include "unistd.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "signal.h"
-#include "string.h"
-#include "errno.h"
-#include "../libft/libft.h"
+# include "unistd.h"
+# include "stdio.h"
+# include "stdlib.h"
+# include "signal.h"
+# include "string.h"
+# include "errno.h"
+# include <readline/readline.h>
+# include <readline/history.h>
+# include "../libft/libft.h"
 typedef struct s_main
 {
 	char	*cmd;
