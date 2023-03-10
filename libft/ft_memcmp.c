@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:26:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/10 12:00:49 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/12 21:01:04 by rakhsas           #+#    #+#             */
+/*   Updated: 2022/10/29 14:28:46 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "libft.h"
 
-void	ft_pwd(void)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	cwd[1025];
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-	ft_putstr(getcwd(cwd, sizeof(cwd)));
-}
-
-void	ft_cd(char *path)
-{
-	int	j;
-
-	j = 0;
-	if (path[0] == '/')
-		path = path+1;
-	if (chdir(path) == -1)
+	i = 0;
+	str1 = (void *)s1;
+	str2 = (void *)s2;
+	while (i < n)
 	{
-		ft_putstr("bash: cd: ");
-		ft_putstr(path);
-		ft_putstr(": No such file or directory");
+		if (i[str1] != i[str2])
+			return (i[str1] - i[str2]);
+		i++;
 	}
+	return (0);
 }

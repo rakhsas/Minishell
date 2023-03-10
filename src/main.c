@@ -6,33 +6,64 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 10:26:50 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/02/23 11:35:33 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/03/10 12:03:29 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-void	handle_signal(int signal)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (signal >= 1)
+	size_t	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		printf("SIGALE RECIEVED %d\n", signal);
-		exit(0);
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+
+
+void str_tolower(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (i[str])
+	{
+		i[str] = ft_tolower(i[str]);
+		i++;
 	}
 }
 
-int main()
+int main(int ac, char **av)
 {
-	signal(SIGQUIT, handle_signal);
-	signal(SIGINT, handle_signal);
-	while(1);
-// 	char buffer[100];
+	t_main	*data;
 
-//   // Read input from stdin until EOF is reached
-//   while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-//     printf("You entered: %s", buffer);
-//   }
+	data = malloc(sizeof(t_main));
+	data->cmd = av[1];
+	str_tolower(data->cmd);
 
-//   printf("End of input reached.\n");
-
+	if (ft_strcmp(data->cmd, "echo") == 0)
+		ft_echo(data, ac, av);
+	else if (ft_strcmp(data->cmd, "pwd") == 0)
+	{
+		ft_pwd();
+		ft_putstr("\n");
+	}
+	else if (ft_strcmp(data->cmd, "cd") == 0)
+	{
+		ft_cd(av[2]);
+		ft_putstr("\n");
+	}
+	else if (ft_strcmp(data->cmd, "export") == 0)
+	{
+		ft_cd(av[2]);
+		ft_putstr("\n");
+	}
 }
+

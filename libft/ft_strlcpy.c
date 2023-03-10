@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:26:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/10 12:00:49 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/13 23:03:37 by rakhsas           #+#    #+#             */
+/*   Updated: 2022/10/30 14:47:43 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "libft.h"
 
-void	ft_pwd(void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	cwd[1025];
+	size_t	i;
+	size_t	x;
 
-	ft_putstr(getcwd(cwd, sizeof(cwd)));
-}
-
-void	ft_cd(char *path)
-{
-	int	j;
-
-	j = 0;
-	if (path[0] == '/')
-		path = path+1;
-	if (chdir(path) == -1)
+	i = 0;
+	x = 0;
+	x = ft_strlen(src);
+	while (i[src] && i + 1 < dstsize)
 	{
-		ft_putstr("bash: cd: ");
-		ft_putstr(path);
-		ft_putstr(": No such file or directory");
+		i[dst] = i[src];
+		i++;
 	}
+	if (dstsize)
+		i[dst] = '\0';
+	return (x);
 }

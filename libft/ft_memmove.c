@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:26:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/10 12:00:49 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/12 22:34:22 by rakhsas           #+#    #+#             */
+/*   Updated: 2022/10/29 16:28:59 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "libft.h"
 
-void	ft_pwd(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	cwd[1025];
+	size_t	i;
+	int		pos;
 
-	ft_putstr(getcwd(cwd, sizeof(cwd)));
-}
-
-void	ft_cd(char *path)
-{
-	int	j;
-
-	j = 0;
-	if (path[0] == '/')
-		path = path+1;
-	if (chdir(path) == -1)
+	i = 0;
+	if (src == NULL && dst == NULL)
+		return (dst);
+	if (dst < src)
 	{
-		ft_putstr("bash: cd: ");
-		ft_putstr(path);
-		ft_putstr(": No such file or directory");
+		while (i < len)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
+	else
+	{
+		while (i < len)
+		{
+			pos = len - 1 - i;
+			((unsigned char *)dst)[pos] = ((unsigned char *)src)[pos];
+			i++;
+		}
+	}
+	return (dst);
 }

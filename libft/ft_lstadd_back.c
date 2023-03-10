@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:26:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/10 12:00:49 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/22 12:32:55 by rakhsas           #+#    #+#             */
+/*   Updated: 2022/10/30 20:20:16 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "libft.h"
 
-void	ft_pwd(void)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char	cwd[1025];
+	t_list	*nt;
 
-	ft_putstr(getcwd(cwd, sizeof(cwd)));
-}
-
-void	ft_cd(char *path)
-{
-	int	j;
-
-	j = 0;
-	if (path[0] == '/')
-		path = path+1;
-	if (chdir(path) == -1)
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		ft_putstr("bash: cd: ");
-		ft_putstr(path);
-		ft_putstr(": No such file or directory");
+		nt = *lst;
+		while (nt->next != NULL)
+			nt = nt->next;
+		nt->next = new;
 	}
 }

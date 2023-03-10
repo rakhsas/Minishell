@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:26:19 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/03/10 12:00:49 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/20 15:47:21 by rakhsas           #+#    #+#             */
+/*   Updated: 2022/10/30 14:18:11 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "libft.h"
 
-void	ft_pwd(void)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	cwd[1025];
+	int	i;
 
-	ft_putstr(getcwd(cwd, sizeof(cwd)));
-}
-
-void	ft_cd(char *path)
-{
-	int	j;
-
-	j = 0;
-	if (path[0] == '/')
-		path = path+1;
-	if (chdir(path) == -1)
+	i = 0;
+	while (i[s])
 	{
-		ft_putstr("bash: cd: ");
-		ft_putstr(path);
-		ft_putstr(": No such file or directory");
+		f(i, &i[s]);
+		i++;
 	}
 }
